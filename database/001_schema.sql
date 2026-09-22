@@ -7,12 +7,8 @@ GO
 USE SouthEmeraldInventory;
 GO
 
-IF OBJECT_ID(N'dbo.stock_transactions', N'U') IS NOT NULL DROP TABLE dbo.stock_transactions;
-IF OBJECT_ID(N'dbo.products', N'U') IS NOT NULL DROP TABLE dbo.products;
-IF OBJECT_ID(N'dbo.categories', N'U') IS NOT NULL DROP TABLE dbo.categories;
-IF OBJECT_ID(N'dbo.users', N'U') IS NOT NULL DROP TABLE dbo.users;
-GO
-
+IF OBJECT_ID(N'dbo.users', N'U') IS NULL
+BEGIN
 CREATE TABLE dbo.users (
   id UNIQUEIDENTIFIER NOT NULL CONSTRAINT PK_users PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
   full_name NVARCHAR(120) NOT NULL,
@@ -25,8 +21,11 @@ CREATE TABLE dbo.users (
   CONSTRAINT UQ_users_email UNIQUE (email),
   CONSTRAINT CK_users_role CHECK (role IN (N'administrator', N'manager', N'staff'))
 );
+END;
 GO
 
+IF OBJECT_ID(N'dbo.categories', N'U') IS NULL
+BEGIN
 CREATE TABLE dbo.categories (
   id UNIQUEIDENTIFIER NOT NULL CONSTRAINT PK_categories PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
   name NVARCHAR(100) NOT NULL,
@@ -35,8 +34,11 @@ CREATE TABLE dbo.categories (
   updated_at DATETIME2(0) NOT NULL CONSTRAINT DF_categories_updated_at DEFAULT SYSUTCDATETIME(),
   CONSTRAINT UQ_categories_name UNIQUE (name)
 );
+END;
 GO
 
+IF OBJECT_ID(N'dbo.products', N'U') IS NULL
+BEGIN
 CREATE TABLE dbo.products (
   id UNIQUEIDENTIFIER NOT NULL CONSTRAINT PK_products PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
   category_id UNIQUEIDENTIFIER NULL,
@@ -54,8 +56,11 @@ CREATE TABLE dbo.products (
   CONSTRAINT CK_products_quantity CHECK (quantity >= 0),
   CONSTRAINT CK_products_minimum_stock CHECK (minimum_stock >= 0)
 );
+END;
 GO
 
+IF OBJECT_ID(N'dbo.stock_transactions', N'U') IS NULL
+BEGIN
 CREATE TABLE dbo.stock_transactions (
   id UNIQUEIDENTIFIER NOT NULL CONSTRAINT PK_stock_transactions PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
   product_id UNIQUEIDENTIFIER NOT NULL,
@@ -72,11 +77,15 @@ CREATE TABLE dbo.stock_transactions (
   CONSTRAINT CK_stock_transactions_quantity CHECK (quantity > 0),
   CONSTRAINT CK_stock_transactions_balances CHECK (previous_quantity >= 0 AND new_quantity >= 0)
 );
+END;
 GO
 
-CREATE INDEX IX_products_name ON dbo.products(name);
-CREATE INDEX IX_products_category_id ON dbo.products(category_id);
-CREATE INDEX IX_stock_transactions_product_created ON dbo.stock_transactions(product_id, created_at DESC);
-CREATE INDEX IX_stock_transactions_created ON dbo.stock_transactions(created_at DESC);
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_products_name' AND object_id = OBJECT_ID(N'dbo.products'))
+  CREATE INDEX IX_products_name ON dbo.products(name);
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_products_category_id' AND object_id = OBJECT_ID(N'dbo.products'))
+  CREATE INDEX IX_products_category_id ON dbo.products(category_id);
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_stock_transactions_product_created' AND object_id = OBJECT_ID(N'dbo.stock_transactions'))
+  CREATE INDEX IX_stock_transactions_product_created ON dbo.stock_transactions(product_id, created_at DESC);
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_stock_transactions_created' AND object_id = OBJECT_ID(N'dbo.stock_transactions'))
+  CREATE INDEX IX_stock_transactions_created ON dbo.stock_transactions(created_at DESC);
 GO
-

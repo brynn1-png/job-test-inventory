@@ -1,5 +1,9 @@
-import "dotenv/config";
+import { config } from "dotenv";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { z } from "zod";
+
+config({ path: resolve(dirname(fileURLToPath(import.meta.url)), "../../../.env") });
 
 const booleanValue = z.string().default("false").transform((value) => value === "true");
 
@@ -28,4 +32,3 @@ if (!parsed.success) {
 }
 
 export const env = parsed.data;
-

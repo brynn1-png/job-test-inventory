@@ -46,7 +46,7 @@ The project uses SQL Server authentication. Enable mixed-mode authentication dur
 
 ## Setup
 
-For complete Windows and local SQL Server instructions, see [SETUP.md](SETUP.md).
+For complete Windows and local SQL Server instructions, see [docs/SETUP.md](docs/SETUP.md).
 
 ### 1. Install dependencies
 
@@ -109,7 +109,7 @@ npm run seed         # Seed development records
 
 ## Documentation
 
-- [Local setup guide](SETUP.md)
+- [Local setup guide](docs/SETUP.md)
 - [Page and workflow guide](docs/PAGE_GUIDE.md)
 - [Verification and technical audit](docs/TEST_REPORT.md)
 

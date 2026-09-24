@@ -76,7 +76,7 @@ export function ProductsPage() {
 
   return (
     <div className="view-enter">
-      <PageHeader title="Product ledger" description="Search, register, and maintain every product carried by the store." actions={canManage && <Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>Add product</Button>} />
+      <PageHeader title="Product ledger" description="Search, register, and maintain every product tracked by the organization." actions={canManage && <Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>Add product</Button>} />
       {error && <Alert type="error" showIcon message={error} className="section-alert" />}
       <section className="ledger-panel">
         <div className="table-toolbar">
@@ -99,7 +99,7 @@ export function ProductsPage() {
           <Form.Item label="Barcode" name="barcode" extra="Scan or enter the manufacturer barcode. Letters, numbers, periods, underscores, and hyphens are accepted." rules={[{ required: true, message: "Enter a barcode." }, { pattern: /^[A-Za-z0-9._-]+$/, message: "Barcode contains unsupported characters." }]}><Input maxLength={80} /></Form.Item>
           <Form.Item label="Category" name="categoryId"><Select allowClear placeholder="Select a category" options={categories.map((category) => ({ value: category.id, label: category.name }))} /></Form.Item>
           <div className="form-grid">
-            <Form.Item label="Unit" name="unit" rules={[{ required: true }]}><Input placeholder="piece, bottle, pack" maxLength={30} /></Form.Item>
+            <Form.Item label="Unit" name="unit" rules={[{ required: true }]}><Input placeholder="unit, box, ream" maxLength={30} /></Form.Item>
             <Form.Item label="Low-stock level" name="minimumStock" rules={[{ required: true }]}><InputNumber min={0} max={1_000_000} precision={0} className="full-width" /></Form.Item>
           </div>
           <Form.Item label="Description" name="description"><Input.TextArea rows={4} maxLength={1000} showCount /></Form.Item>

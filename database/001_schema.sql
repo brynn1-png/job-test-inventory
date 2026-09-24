@@ -1,10 +1,10 @@
-IF DB_ID(N'SouthEmeraldInventory') IS NULL
+IF DB_ID(N'InventoryManagement') IS NULL
 BEGIN
-  CREATE DATABASE SouthEmeraldInventory;
+  CREATE DATABASE InventoryManagement;
 END;
 GO
 
-USE SouthEmeraldInventory;
+USE InventoryManagement;
 GO
 
 IF OBJECT_ID(N'dbo.users', N'U') IS NULL

@@ -20,7 +20,7 @@ export function DashboardPage() {
 
   const metrics = data ? [
     { label: "Active products", value: data.summary.totalProducts, note: "Catalog records", icon: <ProductOutlined />, tone: "slate" },
-    { label: "Units on hand", value: data.summary.totalUnits, note: "Across all products", icon: <InboxOutlined />, tone: "green" },
+    { label: "Units on hand", value: data.summary.totalUnits, note: "Across all products", icon: <InboxOutlined />, tone: "blue" },
     { label: "Low stock", value: data.summary.lowStock, note: "Needs attention", icon: <WarningOutlined />, tone: "amber" },
     { label: "Out of stock", value: data.summary.outOfStock, note: "Unavailable now", icon: <WarningOutlined />, tone: "red" },
   ] : [];
@@ -47,4 +47,3 @@ export function DashboardPage() {
     </div>
   );
 }
-

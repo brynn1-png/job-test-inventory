@@ -3,7 +3,7 @@ import { productSchema } from "./product.js";
 
 describe("productSchema", () => {
   const validProduct = {
-    name: "Bottled Water 500ml",
+    name: "Wireless Keyboard",
     barcode: "4800000000017",
     unit: "bottle",
     minimumStock: 12,
@@ -21,4 +21,3 @@ describe("productSchema", () => {
     expect(() => productSchema.parse({ ...validProduct, barcode: "bad barcode" })).toThrow();
   });
 });
-

@@ -20,7 +20,7 @@ const envSchema = z.object({
   DB_PASSWORD: z.string().min(1),
   DB_ENCRYPT: booleanValue,
   DB_TRUST_SERVER_CERTIFICATE: booleanValue,
-  SEED_ADMIN_EMAIL: z.string().email().default("admin@southemerald.local"),
+  SEED_ADMIN_EMAIL: z.string().email().default("admin@inventory.local"),
   SEED_ADMIN_PASSWORD: z.string().min(8).default("Admin123!"),
 });
 

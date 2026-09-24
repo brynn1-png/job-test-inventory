@@ -32,10 +32,10 @@ export function LoginPage() {
   return (
     <main className="login-page">
       <section className="login-story" aria-label="Product introduction">
-        <div className="login-brand"><img src="/south-emerald-mark.svg" alt="South Emerald Supermarket" /><span>South Emerald Supermarket</span></div>
+        <div className="login-brand"><img src="/inventory-mark.svg" alt="" /><span>Inventory Management</span></div>
         <div className="login-story-copy">
           <h1>Every item accounted for.</h1>
-          <p>Receive stock, trace every movement, and keep the shelves ready from one dependable workspace.</p>
+          <p>Receive stock, trace every movement, and keep inventory accurate from one dependable workspace.</p>
         </div>
         <div className="login-ledger" aria-hidden="true">
           <div><span>Today’s receiving</span><strong>24 entries</strong></div>
@@ -63,4 +63,3 @@ export function LoginPage() {
     </main>
   );
 }
-

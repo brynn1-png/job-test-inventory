@@ -18,7 +18,7 @@ app.use(cors({ origin: env.CLIENT_ORIGIN, credentials: false }));
 app.use(express.json({ limit: "100kb" }));
 
 app.get("/api/health", (_request, response) => {
-  response.json({ status: "ok", service: "south-emerald-inventory-api" });
+  response.json({ status: "ok", service: "inventory-management-api" });
 });
 app.use("/api/auth", authRouter);
 app.use("/api/dashboard", dashboardRouter);
@@ -29,4 +29,3 @@ app.use("/api/reports", reportsRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
-

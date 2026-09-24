@@ -28,8 +28,8 @@ const navigation = [
 function Brand() {
   return (
     <div className="brand-lockup">
-      <img src="/south-emerald-mark.svg" alt="" aria-hidden="true" />
-      <div><strong>South Emerald</strong><span>Inventory operations</span></div>
+      <img src="/inventory-mark.svg" alt="" aria-hidden="true" />
+      <div><strong>Inventory</strong><span>Management system</span></div>
     </div>
   );
 }

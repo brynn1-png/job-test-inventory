@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Inventory Management</title>
+  <desc id="desc">Three organized inventory boxes.</desc>
+  <rect width="64" height="64" rx="15" fill="#2563eb"/>
+  <path d="M14 18.5 25 13l11 5.5L25 24l-11-5.5Zm0 4.5 9 4.5v11l-9-4.5V23Zm22 0v11l-9 4.5v-11l9-4.5Zm3 5.5 7-3.5 7 3.5-7 3.5-7-3.5Zm0 4 5 2.5v7l-5-2.5v-7Zm14 0v7L48 42v-7l5-2.5ZM22 45l10-5 10 5-10 5-10-5Zm0 4 8 4v7l-8-4v-7Zm20 0v7l-8 4v-7l8-4Z" fill="#fff"/>
+</svg>

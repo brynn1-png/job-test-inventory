@@ -21,20 +21,20 @@ async function seed() {
     BEGIN
       INSERT INTO dbo.categories (name, description)
       VALUES
-        (N'Beverages', N'Drinks, juices, water, and powdered beverages'),
-        (N'Canned Goods', N'Canned meat, fish, vegetables, and ready-to-eat goods'),
-        (N'Snacks', N'Biscuits, chips, sweets, and quick snacks'),
-        (N'Household', N'Cleaning and everyday household supplies');
+        (N'Office Supplies', N'Paper, writing materials, and everyday office consumables'),
+        (N'Electronics', N'Computers, accessories, and electronic equipment'),
+        (N'Equipment', N'Tools, machinery, and operational equipment'),
+        (N'General Supplies', N'Uncategorized supplies used across the organization');
     END;
 
     IF NOT EXISTS (SELECT 1 FROM dbo.products)
     BEGIN
-      DECLARE @beverages UNIQUEIDENTIFIER = (SELECT id FROM dbo.categories WHERE name = N'Beverages');
-      DECLARE @snacks UNIQUEIDENTIFIER = (SELECT id FROM dbo.categories WHERE name = N'Snacks');
+      DECLARE @officeSupplies UNIQUEIDENTIFIER = (SELECT id FROM dbo.categories WHERE name = N'Office Supplies');
+      DECLARE @electronics UNIQUEIDENTIFIER = (SELECT id FROM dbo.categories WHERE name = N'Electronics');
       INSERT INTO dbo.products (category_id, name, barcode, description, unit, quantity, minimum_stock)
       VALUES
-        (@beverages, N'Bottled Water 500ml', N'4800000000017', N'Development demonstration product', N'bottle', 48, 12),
-        (@snacks, N'Classic Crackers 100g', N'4800000000024', N'Development demonstration product', N'pack', 20, 8);
+        (@electronics, N'Wireless Keyboard', N'DEMO-ELEC-001', N'Development demonstration product', N'unit', 18, 5),
+        (@officeSupplies, N'Copy Paper A4', N'DEMO-OFFICE-001', N'Development demonstration product', N'ream', 40, 10);
     END;
   `);
 
@@ -46,4 +46,3 @@ seed().catch((error) => {
   console.error("Seed failed", error);
   process.exitCode = 1;
 });
-

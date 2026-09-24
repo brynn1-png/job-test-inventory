@@ -1,6 +1,6 @@
-# South Emerald Inventory
+# Inventory Management System
 
-An interview-ready inventory management system for a grocery store. The project demonstrates a React and Ant Design client, an Express REST API, and a Microsoft SQL Server database with secure authentication, CRUD workflows, transactional stock updates, history, and reporting.
+An interview-ready inventory management system for tracking products and stock across an organization. The project demonstrates a React and Ant Design client, an Express REST API, and a Microsoft SQL Server database with secure authentication, CRUD workflows, transactional stock updates, history, and reporting.
 
 ## Technology stack
 
@@ -46,6 +46,8 @@ The project uses SQL Server authentication. Enable mixed-mode authentication dur
 
 ## Setup
 
+For complete Windows and local SQL Server instructions, see [SETUP.md](SETUP.md).
+
 ### 1. Install dependencies
 
 From the repository root:
@@ -64,7 +66,7 @@ Open `.env` and replace the SQL Server password and JWT secret. The JWT secret m
 
 ### 3. Create the database
 
-Open `database/001_schema.sql` in SSMS, connect to the intended SQL Server instance, and execute the complete script. It creates `SouthEmeraldInventory`, its tables, constraints, and indexes. The script does not delete existing tables or data when rerun.
+Open `database/001_schema.sql` in SSMS, connect to the intended SQL Server instance, and execute the complete script. It creates `InventoryManagement`, its tables, constraints, and indexes. The script does not delete existing tables or data when rerun.
 
 ### 4. Seed the demonstration account
 
@@ -75,7 +77,7 @@ npm run seed
 Default development credentials come from `.env`:
 
 ```text
-Email: admin@southemerald.local
+Email: admin@inventory.local
 Password: Admin123!
 ```
 
@@ -104,6 +106,12 @@ npm run lint         # Lint client and server
 npm test             # Run unit tests
 npm run seed         # Seed development records
 ```
+
+## Documentation
+
+- [Local setup guide](SETUP.md)
+- [Page and workflow guide](docs/PAGE_GUIDE.md)
+- [Verification and technical audit](docs/TEST_REPORT.md)
 
 ## REST API
 

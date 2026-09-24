@@ -1,4 +1,4 @@
-const TOKEN_KEY = "south-emerald-access-token";
+const TOKEN_KEY = "inventory-access-token";
 
 type ApiOptions = Omit<RequestInit, "body"> & { body?: unknown };
 
@@ -34,4 +34,3 @@ export async function api<T>(path: string, options: ApiOptions = {}): Promise<T>
   if (!response.ok) throw new ApiError(response.status, payload.message ?? "The request could not be completed.");
   return payload as T;
 }
-
